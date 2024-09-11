@@ -18,7 +18,7 @@ Route::middleware('auth:admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::post('/admin/logout', [AdminLogoutController::class, 'handle'])->name('admin.logout');
+    Route::post('/admin/logout', AdminLogoutController::class)->name('admin.logout');
 
     Route::get('/admin/events', [EventController::class, 'index'])->name('admin.events.index');
     Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.events.create');

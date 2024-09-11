@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLogoutController extends Controller
 {
-    public function handle(Request $request)
+    public function __invoke(Request $request)
     {
         // Logout the admin user
         Auth::guard('admin')->logout();
