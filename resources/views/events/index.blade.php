@@ -13,12 +13,11 @@
                 </h2>
 
                 @foreach($allEvents as $event)
-                    <div class="flex justify-between items-center py-4">
+                    <div class="flex flex-col py-4 gap-8 sm:flex sm:flex-row sm:justify-between">
                         <div class="block">
                             <h1 class="text-lg font-bold mb-2">{{ $event->name }}</h1>
                             <p class="text-sm mb-2">{{ $event->message ?? 'No message to show' }}</p>
 
-                            <!-- Receipt-like appearance -->
                             <div class="text-xs font-mono bg-gray-100 text-black p-4 border border-gray-300 rounded">
                                 <pre class="whitespace-pre-line">
                                     Recurring date: {{ $event->day_of_the_month ?? 'none' }}
@@ -30,9 +29,9 @@
                                 </pre>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-2 ">
-                            <a href="{{ route('admin.events.show', $event->id) }}" class="text-sm h-fit p-2 text-white bg-blue-700 rounded">Show More</a>
-                            <a href="{{ route('admin.events.destroy', $event->id) }}" class="text-sm h-fit w-fit p-2 text-white bg-red-500 rounded">Remove</a>
+                        <div class="flex flex-col gap-2 mt-4">
+                            <a href="{{ route('admin.events.show', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-blue-700 rounded">Show More</a>
+                            <a href="{{ route('admin.events.destroy', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">Remove</a>
                         </div>
                     </div>
                 @endforeach

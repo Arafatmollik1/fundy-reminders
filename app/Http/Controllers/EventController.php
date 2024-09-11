@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Participant;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -40,6 +42,7 @@ class EventController extends Controller
         // Map the validated data to the appropriate columns
         $eventData = [
             'name' => $validated['event_name'],
+            'day_of_the_month' => $validated['event_date'],
             'recurring' => $validated['it_is_recurring'] ?? false,
             'has_message' => $validated['has_message'] ?? false,
             'message' => $validated['event_message'],
@@ -60,6 +63,7 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
+        $participants = Participant::where('event_id', $event->id)->get();
         return view('events.show', compact('event'));
     }
 
