@@ -64,9 +64,9 @@ class ParticipantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Participant $participant)
+    public function edit(Event $event, Participant $participant)
     {
-        //
+        return view('participants.edit', compact('event', 'participant'));
     }
 
     /**

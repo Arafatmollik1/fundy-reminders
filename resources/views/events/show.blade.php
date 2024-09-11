@@ -45,10 +45,10 @@
                         <p><strong>Message:</strong> {{ $event->message }} </p>
                     </div>
                 </div>
-                <div class="flex items-center justify-around my-8">
-                    <a href="{{ route('admin.events.edit', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-blue-700 rounded">Edit</a>
-                    <a href="{{ route('admin.participants.create' , $event->id) }}" class="text-sm text-center h-fit w-[150px] p-2 text-white bg-blue-500 rounded">Add participants</a>
-                    <a href="{{ route('admin.events.destroy', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">Remove</a>
+                <div class="flex flex-col my-8 gap-6 sm:flex sm:flex-row sm:items-center sm:justify-around">
+                    <a href="{{ route('admin.events.edit', $event->id) }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-blue-700 rounded">Edit</a>
+                    <a href="{{ route('admin.participants.create' , $event->id) }}" class="text-sm text-center h-fit w-full sm:w-[150px] p-2 text-white bg-blue-500 rounded">Add participants</a>
+                    <a href="{{ route('admin.events.index') }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-purple-600 rounded">Go back</a>
                 </div>
 
                 <div>
@@ -65,9 +65,9 @@
                                 <p class="text-gray-600">{{ $participant->email }}</p>
                             </div>
                             <div class="mt-2 md:mt-0">
-{{--                                <a href="{{ route('participants.edit', $participant->id) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                <a href="{{ route('admin.participants.edit', [$event->id, $participant->id]) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
                                     Edit
-                                </a>--}}
+                                </a>
                             </div>
                         </div>
                     @endforeach
