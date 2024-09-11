@@ -26,7 +26,7 @@ class EventFactory extends Factory
             'recurring' => $this->faker->boolean,
             'has_message' => $this->faker->boolean,
             'message' => $this->faker->optional()->sentence,
-            'hasPayment' => $this->faker->boolean,
+            'has_payment' => $this->faker->boolean,
             'amount' => $this->faker->optional()->randomFloat(2, 10, 1000),
             'bank_id' => $this->faker->optional()->swiftBicNumber,
             'recipient_name' => $this->faker->optional()->name,

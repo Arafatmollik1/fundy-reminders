@@ -15,7 +15,7 @@ class Event extends Model
         'recurring',
         'has_message',
         'message',
-        'hasPayment',
+        'has_payment',
         'amount',
         'bank_id',
         'recipient_name',

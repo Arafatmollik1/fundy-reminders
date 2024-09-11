@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->boolean('recurring')->nullable();
                 $table->boolean('has_message')->nullable();
                 $table->string('message')->nullable();
-                $table->boolean('hasPayment')->nullable();
+                $table->boolean('has_payment')->nullable();
                 $table->float('amount')->nullable();
                 $table->string('bank_id')->nullable();
                 $table->string('recipient_name')->nullable();
