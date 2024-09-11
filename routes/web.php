@@ -3,6 +3,7 @@
     use App\Http\Controllers\AdminLoginController;
     use App\Http\Controllers\AdminLogoutController;
     use App\Http\Controllers\EventController;
+    use App\Http\Controllers\ParticipantController;
     use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,15 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/events/{event}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
     Route::patch('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
     Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+
+
+    Route::get('/admin/{event}/participants/create', [ParticipantController::class, 'create'])->name('admin.participants.create');
+    Route::post('/admin/{event}/participants', [ParticipantController::class, 'store'])->name('admin.participants.store');
+    Route::get('/admin/{event}/participants/{participant}', [ParticipantController::class, 'show'])->name('admin.participants.show');
+    Route::get('/admin/{event}/participants/{participant}/edit', [ParticipantController::class, 'edit'])->name('admin.participants.edit');
+    Route::patch('/admin/{event}/participants/{participant}', [ParticipantController::class, 'update'])->name('admin.participants.update');
+    Route::delete('/admin/{event}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('admin.participants.destroy');
+
 });
 
 

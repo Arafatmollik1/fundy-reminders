@@ -4,23 +4,10 @@
             {{ __('Event details') }}
         </h2>
     </x-slot>
-{{--
-    "id" => 1
-    "name" => "Example 11"
-    "day_of_the_month" => null
-    "recurring" => "on"
-    "has_message" => 0
-    "message" => "Netflix Payment dates."
-    "has_payment" => 1
-    "amount" => 3.2
-    "bank_id" => "FI121212323212"
-    "recipient_name" => "Mollik"
-    "mobile_pay_number" => "0449187713"
-    "created_at" => "2024-09-11 19:01:48"
-    "updated_at" => "2024-09-11 19:01:48"--}}
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-fundy-ui-alert type="success" class="bg-green-600 text-green-100 p-4 rounded my-4" />
             <div class="bg-white shadow-sm sm:rounded-lg p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">
                     Event: {{ $event->name }}
@@ -60,7 +47,7 @@
                 </div>
                 <div class="flex items-center justify-around my-8">
                     <a href="{{ route('admin.events.edit', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-blue-700 rounded">Edit</a>
-                    <a href="{{ route('admin.events.index') }}" class="text-sm text-center h-fit w-[150px] p-2 text-white bg-blue-500 rounded">Add participants</a>
+                    <a href="{{ route('admin.participants.create' , $event->id) }}" class="text-sm text-center h-fit w-[150px] p-2 text-white bg-blue-500 rounded">Add participants</a>
                     <a href="{{ route('admin.events.destroy', $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">Remove</a>
                 </div>
 
@@ -70,19 +57,23 @@
                     </h2>
                 </div>
                 <div class="space-y-4">
-                    @foreach ($participants as $participant)
+                    @if(!empty($participants->toArray()))
+                        @foreach ($participants as $participant)
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between bg-white shadow p-4 rounded-md">
                             <div class="flex-1">
                                 <p class="font-semibold text-gray-900">{{ $participant->name }}</p>
                                 <p class="text-gray-600">{{ $participant->email }}</p>
                             </div>
                             <div class="mt-2 md:mt-0">
-                                <a href="{{ route('participants.edit', $participant->id) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
+{{--                                <a href="{{ route('participants.edit', $participant->id) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
                                     Edit
-                                </a>
+                                </a>--}}
                             </div>
                         </div>
                     @endforeach
+                    @else
+                        <p>No participants found.</p>
+                    @endif
                 </div>
             </div>
         </div>

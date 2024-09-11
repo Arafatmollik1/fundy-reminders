@@ -64,7 +64,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $participants = Participant::where('event_id', $event->id)->get();
-        return view('events.show', compact('event'));
+        return view('events.show', compact('event', 'participants'));
     }
 
     // Show the form for editing the specified resource.
