@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col mb-6 p-6 bg-white gap-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <h2 class="text-gray-900 font-semibold">
-                    {{ __("Create an recurring event") }}
+                    {{ __("Create a recurring event") }}
                 </h2>
                     <x-fundy-ui-form action="{{ route('admin.events.store') }}" class="flex flex-col gap-6 overflow-hidden">
                         <div class="relative">

@@ -10,7 +10,7 @@
             <x-fundy-ui-alert type="success" class="bg-green-600 text-green-100 p-4 rounded my-4" />
             <div class="mb-6 p-6 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <h2 class="text-gray-900 font-semibold">
-                    {{ __("Create an recurring event") }}
+                    {{ __("Create a recurring event") }}
                 </h2>
                 <p>You can create an event and add people to set automated reminders</p>
                 <div class="py-4">

@@ -82,6 +82,13 @@
                     <div class="py-4">
                         <input type="submit" class="text-sm p-2 text-white bg-blue-700 rounded" value="Update Event"  />
                     </div>
+                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">
+                            Delete Event
+                        </button>
+                    </form>
                 </form>
             </div>
         </div>
