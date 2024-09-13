@@ -22,13 +22,12 @@
                         <x-fundy-ui-label for="event_name" value="Event Name" />
                         <x-fundy-ui-input name="event_name" id="event_name" value="{{ old('event_name', $event->name) }}" required></x-fundy-ui-input>
                     </div>
-
                     <!-- Recurring Checkbox -->
                     <div class="relative">
                         <x-fundy-ui-checkbox
                             name="it_is_recurring"
                             id="it_is_recurring"
-                            :checked="isset($event->it_is_recurring)"
+                            :checked="isset($event->recurring)"
                         />
                         <x-fundy-ui-label
                             for="it_is_recurring"
@@ -40,7 +39,7 @@
                         <x-fundy-ui-checkbox
                             name="it_requires_payment"
                             id="it_requires_payment"
-                            :checked="isset($event->requires_payment)"
+                            :checked="isset($event->has_payment)"
                             />
                         <x-fundy-ui-label for="it_requires_payment" value="Requires Payment" />
                     </div>
