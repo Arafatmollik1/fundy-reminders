@@ -64,8 +64,9 @@
                             @endforeach
                         @endif
 
-                        <div class="py-4">
-                            <x-fundy-ui-form-button action="submit" class="text-sm p-2 text-white bg-blue-700 rounded">Create an event</x-fundy-ui-form-button>
+                        <div class="py-4 flex flex-col gap-2 sm:flex sm:flex-row">
+                            <x-fundy-ui-form-button action="submit" class="text-sm text-center h-fit w-full sm:w-[150px] p-2 text-white bg-blue-700 rounded">Create an event</x-fundy-ui-form-button>
+                            <a href="{{ route('admin.dashboard') }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-purple-600 rounded">Go back</a>
                         </div>
                 </x-fundy-ui-form>
             </div>
