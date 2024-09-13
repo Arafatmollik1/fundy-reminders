@@ -12,6 +12,7 @@
             text-align: left;
         }
     </style>
+    <title>Email</title>
 </head>
 <body>
 <h2>Participant Information</h2>
