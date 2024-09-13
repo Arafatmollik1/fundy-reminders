@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\AdminLoginController;
     use App\Http\Controllers\AdminLogoutController;
+    use App\Http\Controllers\EmailController;
     use App\Http\Controllers\EventController;
     use App\Http\Controllers\ParticipantController;
     use App\Http\Controllers\ProfileController;
@@ -32,10 +33,11 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/admin/{event}/participants/create', [ParticipantController::class, 'create'])->name('admin.participants.create');
     Route::post('/admin/{event}/participants', [ParticipantController::class, 'store'])->name('admin.participants.store');
-    Route::get('/admin/{event}/participants/{participant}', [ParticipantController::class, 'show'])->name('admin.participants.show');
     Route::get('/admin/{event}/participants/{participant}/edit', [ParticipantController::class, 'edit'])->name('admin.participants.edit');
     Route::patch('/admin/{event}/participants/{participant}', [ParticipantController::class, 'update'])->name('admin.participants.update');
     Route::delete('/admin/{event}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('admin.participants.destroy');
+
+    Route::post('/admin/{event}/participants/{participant}/sendemail', [EmailController::class])->name('admin.participants.destroy');
 
 });
 

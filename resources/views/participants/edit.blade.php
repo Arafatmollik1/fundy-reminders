@@ -12,7 +12,7 @@
                     <!-- Update form -->
                     <form action="{{ route('admin.participants.update', [$event->id, $participant->id]) }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
 
                         <!-- Hidden Event ID -->
                         <x-fundy-ui-input name="event_id" type="hidden" value="{{ $event->id }}" />
@@ -42,11 +42,17 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="flex items-center justify-end mt-4">
-                            <button type="submit" class="text-sm text-center h-fit w-[150px] p-2 text-white bg-blue-700 rounded">
-                                Update Participant
-                            </button>
+                        <div class="flex items-center justify-start mt-4 gap-4">
+                            <input type="submit" class="text-sm text-center h-fit w-full sm:w-[150px] p-2 text-white bg-blue-700 rounded" value="Update Participant" />
+                            <a href="{{ route('admin.events.show' , $event->id) }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-purple-600 rounded">Go back</a>
                         </div>
+                    </form>
+                    <form action="{{ route('admin.participants.destroy', [$event->id ,$participant->id] ) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this participant?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="mt-8 text-sm text-center w-full h-fit sm:w-[150px] p-2 text-white bg-red-500 rounded">
+                            Remove participant
+                        </button>
                     </form>
                 </div>
             </div>

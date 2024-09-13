@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,14 +47,6 @@ class ParticipantController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Participant $participant)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Event $event, Participant $participant)
@@ -72,16 +57,36 @@ class ParticipantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Participant $participant)
+    public function update(Event $event, Participant $participant, Request $request)
     {
-        //
+        // Validate the request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'amount' => 'nullable|numeric',
+            'date_of_month' => 'nullable|integer|min:1|max:31',
+        ]);
+
+        // Map the validated data to the appropriate columns
+        $participantData = [
+            'event_id' => $event->id,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'amount' => $validated['amount'],
+            'date_of_month' => $validated['date_of_month'],
+        ];
+        $participant->update($participantData);
+
+        return redirect()->route('admin.events.show' , $event->id)->with('success', 'Participant updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Participant $participant)
+    public function destroy(Event $event, Participant $participant)
     {
-        //
+        $participant->delete();
+
+        return redirect()->route('admin.events.show' , $event->id)->with('success', 'Participant removed successfully.');
     }
 }
