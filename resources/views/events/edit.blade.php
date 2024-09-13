@@ -25,13 +25,24 @@
 
                     <!-- Recurring Checkbox -->
                     <div class="relative">
-                        <x-fundy-ui-checkbox name="it_is_recurring" id="it_is_recurring" value=" {{ old('it_is_recurring', $event->recurring) ? 'checked' : '' }}"/>
-                        <x-fundy-ui-label for="it_is_recurring" value="Is Recurring?" />
+                        <x-fundy-ui-checkbox
+                            name="it_is_recurring"
+                            id="it_is_recurring"
+                            :checked="old('it_is_recurring', $event->recurring)"
+                        />
+                        <x-fundy-ui-label
+                            for="it_is_recurring"
+                            value="Is Recurring?"
+                        />
                     </div>
 
                     <!-- Requires Payment Checkbox -->
                     <div class="relative">
-                        <x-fundy-ui-checkbox name="it_requires_payment" id="it_requires_payment" value="{{ old('it_requires_payment', $event->hasPayment) ? 'checked' : '' }}"/>
+                        <x-fundy-ui-checkbox
+                            name="it_requires_payment"
+                            id="it_requires_payment"
+                            :checked="old('it_is_recurring', $event->recurring)"
+                            />
                         <x-fundy-ui-label for="it_requires_payment" value="Requires Payment?" />
                     </div>
 
@@ -78,7 +89,6 @@
                         @endforeach
                     @endif
 
-                    <!-- Submit Button -->
                     <div class="py-4">
                         <input type="submit" class="text-sm p-2 text-white bg-blue-700 rounded" value="Update Event"  />
                     </div>
