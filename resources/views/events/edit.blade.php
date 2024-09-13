@@ -28,22 +28,21 @@
                         <x-fundy-ui-checkbox
                             name="it_is_recurring"
                             id="it_is_recurring"
-                            :checked="old('it_is_recurring', $event->recurring)"
+                            :checked="isset($event->it_is_recurring)"
                         />
                         <x-fundy-ui-label
                             for="it_is_recurring"
                             value="Is Recurring?"
                         />
                     </div>
-
                     <!-- Requires Payment Checkbox -->
                     <div class="relative">
                         <x-fundy-ui-checkbox
                             name="it_requires_payment"
                             id="it_requires_payment"
-                            :checked="old('it_is_recurring', $event->recurring)"
+                            :checked="isset($event->requires_payment)"
                             />
-                        <x-fundy-ui-label for="it_requires_payment" value="Requires Payment?" />
+                        <x-fundy-ui-label for="it_requires_payment" value="Requires Payment" />
                     </div>
 
                     <!-- Event Date for Each Month -->
@@ -92,13 +91,13 @@
                     <div class="py-4">
                         <input type="submit" class="text-sm p-2 text-white bg-blue-700 rounded" value="Update Event"  />
                     </div>
-                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">
-                            Delete Event
-                        </button>
-                    </form>
+                </form>
+                <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-red-500 rounded">
+                        Delete Event
+                    </button>
                 </form>
             </div>
         </div>
