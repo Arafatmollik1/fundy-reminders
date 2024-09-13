@@ -15,7 +15,7 @@
                 <!-- Edit Event Form -->
                 <form action="{{ route('admin.events.update', $event->id) }}" class="flex flex-col gap-6 overflow-hidden" method="POST">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
 
                     <!-- Event Name -->
                     <div class="relative">

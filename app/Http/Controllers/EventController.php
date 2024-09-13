@@ -25,7 +25,6 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request data
         $validated = $request->validate([
             'event_name' => 'required|string|max:255',
             'event_date' => 'nullable|integer|min:1|max:31',
@@ -39,18 +38,17 @@ class EventController extends Controller
             'mobile_pay' => 'nullable|string',
         ]);
 
-        // Map the validated data to the appropriate columns
         $eventData = [
             'name' => $validated['event_name'],
-            'day_of_the_month' => $validated['event_date'],
+            'day_of_the_month' => $validated['event_date'] ?? 'undefined',
             'recurring' => $validated['it_is_recurring'] ?? false,
             'has_message' => $validated['has_message'] ?? false,
-            'message' => $validated['event_message'],
-            'has_payment' => (bool)$validated['it_requires_payment'] ?? false,
-            'amount' => $validated['amount'],
-            'bank_id' => $validated['bank_id'],
-            'recipient_name' => $validated['recipient_name'],
-            'mobile_pay_number' => $validated['mobile_pay'],
+            'message' => $validated['event_message'] ?? 'undefined',
+            'has_payment' => $validated['it_requires_payment'] ?? false,
+            'amount' => $validated['amount'] ?? 'undefined',
+            'bank_id' => $validated['bank_id'] ?? 'undefined',
+            'recipient_name' => $validated['recipient_name'] ?? 'undefined',
+            'mobile_pay_number' => $validated['mobile_pay'] ?? 'undefined',
         ];
 
         // Create the new event record
@@ -74,8 +72,6 @@ class EventController extends Controller
     }
     public function update(Request $request, Event $event)
     {
-        dd($request->all());
-        // Validate the request data
         $validated = $request->validate([
             'event_name' => 'required|string|max:255',
             'event_date' => 'nullable|integer|min:1|max:31',
@@ -89,18 +85,17 @@ class EventController extends Controller
             'mobile_pay' => 'nullable|string',
         ]);
 
-        // Map the validated data to the appropriate columns
         $eventData = [
             'name' => $validated['event_name'],
-            'day_of_the_month' => $validated['event_date'],
+            'day_of_the_month' => $validated['event_date'] ?? 'undefined',
             'recurring' => $validated['it_is_recurring'] ?? false,
             'has_message' => $validated['has_message'] ?? false,
-            'message' => $validated['event_message'],
-            'has_payment' => (bool)$validated['it_requires_payment'] ?? false,
-            'amount' => $validated['amount'],
-            'bank_id' => $validated['bank_id'],
-            'recipient_name' => $validated['recipient_name'],
-            'mobile_pay_number' => $validated['mobile_pay'],
+            'message' => $validated['event_message'] ?? 'undefined',
+            'has_payment' => $validated['it_requires_payment'] ?? false,
+            'amount' => $validated['amount'] ?? 'undefined',
+            'bank_id' => $validated['bank_id'] ?? 'undefined',
+            'recipient_name' => $validated['recipient_name'] ?? 'undefined',
+            'mobile_pay_number' => $validated['mobile_pay'] ?? 'undefined',
         ];
 
         $event->update($eventData);
