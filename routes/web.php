@@ -26,7 +26,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
     Route::get('/admin/events/{event}', [EventController::class, 'show'])->name('admin.events.show');
     Route::get('/admin/events/{event}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-    Route::patch('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
+    Route::put('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
     Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy');
 
 

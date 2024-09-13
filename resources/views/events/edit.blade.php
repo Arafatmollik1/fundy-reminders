@@ -13,7 +13,7 @@
                 </h2>
 
                 <!-- Edit Event Form -->
-                <x-fundy-ui-form action="{{ route('admin.events.update', $event->id) }}" method="PATCH" class="flex flex-col gap-6 overflow-hidden">
+                <form action="{{ route('admin.events.update', $event->id) }}" class="flex flex-col gap-6 overflow-hidden" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -80,9 +80,9 @@
 
                     <!-- Submit Button -->
                     <div class="py-4">
-                        <x-fundy-ui-form-button action="submit" class="text-sm p-2 text-white bg-blue-700 rounded">Update Event</x-fundy-ui-form-button>
+                        <input type="submit" class="text-sm p-2 text-white bg-blue-700 rounded" value="Update Event"  />
                     </div>
-                </x-fundy-ui-form>
+                </form>
             </div>
         </div>
     </div>
