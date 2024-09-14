@@ -14,12 +14,12 @@ class ParticipantMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Participant $participant;  // Define the participant data as a public property
+    public array $participant;  // Define the participant data as a public property
 
     /**
      * Create a new message instance.
      */
-    public function __construct($participant)
+    public function __construct(array $participant)
     {
         $this->participant = $participant;  // Initialize the participant data
     }

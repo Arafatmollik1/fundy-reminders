@@ -21,7 +21,7 @@
                         <p><strong>Day of the Month:</strong> {{ $event->day_of_the_month }} </p>
                     </div>
                     <div>
-                        <p><strong>Has Payment:</strong> {{ $event->has_payment }} </p>
+                        <p><strong>Payment required:</strong> {{ $event->has_payment }} </p>
                     </div>
                     <div>
                         <p><strong>Amount:</strong> {{ $event->amount }} </p>
@@ -65,7 +65,17 @@
                                 <p class="text-gray-600">{{ $participant->email }}</p>
                             </div>
                             <div class="mt-2 md:mt-0">
-                                <a href="{{ route('admin.participants.edit', [$event->id, $participant->id]) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
+                                <x-fundy-ui-form
+                                    method="POST"
+                                    action="{{ route('admin.participants.sendemail', [$event->id, $participant->id]) }}"
+                                    class="inline-block"
+                                >
+                                    <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
+                                        Send test email
+                                    </button>
+                                </x-fundy-ui-form>
+
+                                <a href="{{ route('admin.participants.edit', [$event->id, $participant->id]) }}" class="mx-4 text-blue-600 hover:text-blue-800 font-semibold">
                                     Edit
                                 </a>
                             </div>

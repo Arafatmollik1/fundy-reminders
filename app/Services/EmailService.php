@@ -7,7 +7,6 @@
   {
       public function send($email, $mailable): void
       {
-          $response=Mail::to($email)->send($mailable);
-          dd($response);
+          Mail::to($email)->send($mailable);
       }
   }

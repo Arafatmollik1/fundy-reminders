@@ -25,7 +25,6 @@ class EmailController extends Controller
      */
     public function __invoke(Request $request, Event $event, Participant $participant)
     {
-        // Fetch the participant data
         $participantData = [
             'name' => $participant->name,
             'email' => $participant->email,
@@ -40,6 +39,6 @@ class EmailController extends Controller
         $this->emailService->send($participant->email, $mailable);
 
         // Return a response (success message)
-        return response()->json(['message' => 'Email sent successfully to ' . $participant->email]);
+        return redirect()->route('admin.events.show', $event)->with('success', 'Email sent successfully');
     }
 }
