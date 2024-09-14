@@ -1,35 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Reminder</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #5A67D8;
+            text-align: center;
+        }
+        .event-card {
+            background-color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .event-card div {
+            margin-bottom: 10px;
+        }
+        .event-card label {
+            font-weight: bold;
+            color: #4a5568;
+            display: block;
+        }
+        .event-card span {
+            display: block;
+            color: #333;
+            margin-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888888;
         }
     </style>
-    <title>Email</title>
 </head>
 <body>
-<h2>Participant Information</h2>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Amount</th>
-        <th>Date of Month</th>
-    </tr>
-    <tr>
-        <td>{{ $participant['name'] }}</td>
-        <td>{{ $participant['email'] }}</td>
-        <td>{{ $participant['amount'] }}</td>
-        <td>{{ $participant['date_of_month'] }}</td>
-    </tr>
-</table>
+<div class="email-container">
+    <h2>Reminder: {{ $eventData['name'] }}</h2>
+
+    <p>Dear {{ $eventData['recipient_name'] }},</p>
+    <p>This is a reminder for the upcoming event, <strong>{{ $eventData['name'] }}</strong>. Below are the details:</p>
+
+    <div class="event-card">
+        <div>
+            <label>Message</label>
+            <span>{{ $eventData['message'] }}</span>
+        </div>
+        <div>
+            <label>Amount</label>
+            <span>{{ $eventData['amount'] }}</span>
+        </div>
+        <div>
+            <label>Bank ID</label>
+            <span>{{ $eventData['bank_id'] }}</span>
+        </div>
+        <div>
+            <label>Name of the recipient</label>
+            <span>{{ $eventData['recipient_name'] }}</span>
+        </div>
+        <div>
+            <label>Mobile Pay Number</label>
+            <span>{{ $eventData['mobile_pay_number'] }}</span>
+        </div>
+    </div>
+
+    <p>If you have any questions or need assistance, feel free to contact Arafat Mollik. </p>
+
+    <div class="footer">
+        <p>Thank you for your participation!</p>
+        <p>&copy; {{ date('Y') }}</p>
+    </div>
+</div>
+
 </body>
 </html>

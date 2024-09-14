@@ -25,15 +25,17 @@ class EmailController extends Controller
      */
     public function __invoke(Request $request, Event $event, Participant $participant)
     {
-        $participantData = [
-            'name' => $participant->name,
-            'email' => $participant->email,
-            'amount' => $participant->amount,
-            'date_of_month' => $participant->date_of_month,
+        $eventData = [
+            'name' => $event->name,
+            'message' => $event->message,
+            'amount' => $event->amount,
+            'bank_id' => $event->bank_id,
+            'recipient_name' => $event->recipient_name,
+            'mobile_pay_number' => $event->mobile_pay_number,
         ];
 
         // Create a new mailable instance with the participant data
-        $mailable = new ParticipantMail($participantData);
+        $mailable = new ParticipantMail($eventData);
 
         // Send the email using the email service
         $this->emailService->send($participant->email, $mailable);

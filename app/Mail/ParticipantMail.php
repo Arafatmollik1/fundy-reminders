@@ -14,14 +14,11 @@ class ParticipantMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public array $participant;  // Define the participant data as a public property
+    public array $eventData;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct(array $participant)
+    public function __construct(array $eventData)
     {
-        $this->participant = $participant;  // Initialize the participant data
+        $this->eventData = $eventData;
     }
 
     /**
@@ -30,7 +27,7 @@ class ParticipantMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Participant Information',
+            subject: 'Event Reminder',
         );
     }
 
@@ -40,7 +37,7 @@ class ParticipantMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.participant',  // Reference to the Blade view
+            view: 'emails.participant',
         );
     }
 
