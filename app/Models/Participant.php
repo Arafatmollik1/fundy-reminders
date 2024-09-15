@@ -26,6 +26,7 @@ class Participant extends Model
         'email',
         'amount',
         'date_of_month',
+        'last_payment_confirmed_at',
     ];
 
     /**

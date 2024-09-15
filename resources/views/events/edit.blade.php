@@ -91,6 +91,7 @@
                         <input type="submit" class="text-sm p-2 text-white bg-blue-700 rounded" value="Update Event"  />
                     </div>
                 </form>
+                <a href="{{ route('admin.events.show' , $event->id) }}" class="text-sm text-center h-fit w-[100px] p-2 text-white bg-purple-600 rounded">Go back</a>
                 <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
                     @csrf
                     @method('DELETE')

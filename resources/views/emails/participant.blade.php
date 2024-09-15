@@ -85,6 +85,8 @@
 
     <p>If you have any questions or need assistance, feel free to contact Arafat Mollik. </p>
 
+    <a href="{{ route('events.paid.info', [$eventData['id'] , $participantData['id']]) }}" style="display: block; text-align: center; margin-top: 20px; padding: 10px 20px; background-color: #5A67D8; color: #ffffff; text-decoration: none; border-radius: 5px;">I have paid</a>
+
     <div class="footer">
         <p>Thank you for your participation!</p>
         <p>&copy; {{ date('Y') }}</p>

@@ -21,4 +21,10 @@ class Event extends Model
         'recipient_name',
         'mobile_pay_number',
     ];
+
+    public static function findOrFail(string $event)
+    {
+        return self::where('id', $event)->firstOrFail();
+    }
+
 }

@@ -15,10 +15,12 @@ class ParticipantMail extends Mailable
     use Queueable, SerializesModels;
 
     public array $eventData;
+    public array $participantData;
 
-    public function __construct(array $eventData)
+    public function __construct(array $eventData, array $participantData)
     {
         $this->eventData = $eventData;
+        $this->participantData = $participantData;
     }
 
     /**

@@ -5,8 +5,10 @@
     use App\Http\Controllers\EmailController;
     use App\Http\Controllers\EventController;
     use App\Http\Controllers\ParticipantController;
+    use App\Http\Controllers\PaymentConfirmationController;
     use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\ShowSuccessController;
+    use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
@@ -37,14 +39,17 @@ Route::middleware('auth:admin')->group(function () {
     Route::patch('/admin/{event}/participants/{participant}', [ParticipantController::class, 'update'])->name('admin.participants.update');
     Route::delete('/admin/{event}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('admin.participants.destroy');
 
-    Route::post('/admin/{event}/participants/{participant}/sendemail', EmailController::class   )->name('admin.participants.sendemail');
-
+    Route::post('/admin/{event}/participants/{participant}/sendemail', EmailController::class )->name('admin.participants.sendemail');
 });
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/show-success-paid', ShowSuccessController::class )->name('guest.paid.success');
+Route::get('/{event}/{participant}/confirm-paid', PaymentConfirmationController::class )->name('events.paid.info');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

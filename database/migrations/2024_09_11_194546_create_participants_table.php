@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->decimal('amount', 8, 2)->nullable(); // Amount field with 2 decimal places
             $table->integer('date_of_month')->nullable(); // Nullable in case it's not always set
+            $table->timestamp('last_payment_confirmed_at')->nullable(); // Nullable in case it's not always set
             $table->timestamps(); // Automatically adds created_at and updated_at
         });
     }
