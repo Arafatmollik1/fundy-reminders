@@ -57,7 +57,7 @@
 <div class="email-container">
     <h2>Reminder: {{ $eventData['name'] }}</h2>
 
-    <p>Dear {{ $eventData['recipient_name'] }},</p>
+    <p>Dear {{ $participantData['name'] }},</p>
     <p>This is a reminder for the upcoming event, <strong>{{ $eventData['name'] }}</strong>. Below are the details:</p>
 
     <div class="event-card">

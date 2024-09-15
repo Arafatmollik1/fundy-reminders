@@ -64,6 +64,12 @@
                                 <p class="font-semibold text-gray-900">{{ $participant->name }}</p>
                                 <p class="text-gray-600">{{ $participant->email }}</p>
                             </div>
+
+                            <div class="text-xs font-mono h-auto text-black sm:px-8">
+                                Last confirmed payment date: {{ $participant->last_payment_confirmed_at ? \Carbon\Carbon::parse($participant->last_payment_confirmed_at)->format('d-m-Y H:i') : 'none' }}
+                            </div>
+
+
                             <div class="mt-2 md:mt-0">
                                 <x-fundy-ui-form
                                     method="POST"
@@ -71,7 +77,7 @@
                                     class="inline-block"
                                 >
                                     <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
-                                        Send test email
+                                        Send email now
                                     </button>
                                 </x-fundy-ui-form>
 
