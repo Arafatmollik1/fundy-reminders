@@ -27,4 +27,17 @@ class Event extends Model
         return self::where('id', $event)->firstOrFail();
     }
 
+    public function getAllParticipants(){
+
+        return $this->participants()->get();
+    }
+
+    /**
+     * Define a one-to-many relationship with Participant.
+     */
+    public function participants(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Participant::class, 'event_id');
+    }
+
 }

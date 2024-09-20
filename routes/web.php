@@ -39,7 +39,8 @@ Route::middleware('auth:admin')->group(function () {
     Route::patch('/admin/{event}/participants/{participant}', [ParticipantController::class, 'update'])->name('admin.participants.update');
     Route::delete('/admin/{event}/participants/{participant}', [ParticipantController::class, 'destroy'])->name('admin.participants.destroy');
 
-    Route::post('/admin/{event}/participants/{participant}/sendemail', EmailController::class )->name('admin.participants.sendemail');
+    Route::post('/admin/{event}/participants/{participant}/sendemail', [EmailController::class, 'single'])->name('admin.participants.sendemail');
+    Route::post('/admin/{event}/participants/sendemail-all', [EmailController::class, 'all'] )->name('admin.participants.sendemail.all');
 });
 
 

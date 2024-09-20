@@ -49,6 +49,15 @@
                     <a href="{{ route('admin.events.edit', $event->id) }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-blue-700 rounded">Edit</a>
                     <a href="{{ route('admin.participants.create' , $event->id) }}" class="text-sm text-center h-fit w-full sm:w-[150px] p-2 text-white bg-blue-500 rounded">Add participants</a>
                     <a href="{{ route('admin.events.index') }}" class="text-sm text-center h-fit w-full sm:w-[100px] p-2 text-white bg-purple-600 rounded">Go back</a>
+                    <x-fundy-ui-form
+                        method="POST"
+                        action="{{ route('admin.participants.sendemail.all', $event->id) }}"
+                        class="inline-block"
+                    >
+                        <button type="submit" class="text-sm text-center h-fit w-full sm:w-[180px] p-2 text-white bg-red-500 rounded">
+                            Send email to all
+                        </button>
+                    </x-fundy-ui-form>
                 </div>
 
                 <div>
@@ -71,17 +80,7 @@
 
 
                             <div class="mt-2 md:mt-0">
-                                <x-fundy-ui-form
-                                    method="POST"
-                                    action="{{ route('admin.participants.sendemail', [$event->id, $participant->id]) }}"
-                                    class="inline-block"
-                                >
-                                    <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
-                                        Send email now
-                                    </button>
-                                </x-fundy-ui-form>
-
-                                <a href="{{ route('admin.participants.edit', [$event->id, $participant->id]) }}" class="mx-4 text-blue-600 hover:text-blue-800 font-semibold">
+                                <a href="{{ route('admin.participants.edit', [$event->id, $participant->id]) }}" class="text-blue-600 hover:text-blue-800 font-semibold">
                                     Edit
                                 </a>
                             </div>
