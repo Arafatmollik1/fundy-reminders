@@ -29,7 +29,6 @@ class EmailController extends Controller
             'id' => $event->id,
             'name' => $event->name,
             'message' => $event->message,
-            'amount' => $event->amount,
             'bank_id' => $event->bank_id,
             'recipient_name' => $event->recipient_name,
             'mobile_pay_number' => $event->mobile_pay_number,
@@ -37,7 +36,8 @@ class EmailController extends Controller
 
         $participantData = [
             'id' => $participant->id,
-            'name' => $participant->name
+            'name' => $participant->name,
+            'amount' => $participant->amount,
         ];
 
         // Create a new mailable instance with the participant data

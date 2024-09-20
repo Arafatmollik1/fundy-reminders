@@ -27,7 +27,7 @@
                         <x-fundy-ui-checkbox
                             name="it_is_recurring"
                             id="it_is_recurring"
-                            :checked="isset($event->recurring)"
+                            :checked="$event->recurring ?: false"
                         />
                         <x-fundy-ui-label
                             for="it_is_recurring"
@@ -39,8 +39,8 @@
                         <x-fundy-ui-checkbox
                             name="it_requires_payment"
                             id="it_requires_payment"
-                            :checked="isset($event->has_payment)"
-                            />
+                            :checked="$event->has_payment ?: false"
+                        />
                         <x-fundy-ui-label for="it_requires_payment" value="Requires Payment" />
                     </div>
 

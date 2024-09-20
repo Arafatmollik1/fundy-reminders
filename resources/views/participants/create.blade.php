@@ -39,6 +39,12 @@
                             <x-fundy-ui-input name="date_of_month" value="{{ $event->day_of_the_month }}" id="date_of_month" class="block w-full mt-1" required />
                         </div>
 
+                        @if(!empty($errors->all()))
+                            @foreach($errors->all() as $error)
+                                <div class="text-red-500">{{ $error }}</div>
+                            @endforeach
+                        @endif
+
                         <!-- Submit Button -->
                         <div class="flex items-center justify-end mt-4">
                             <button type="submit" class="text-sm text-center h-fit w-[150px] p-2 text-white bg-blue-700 rounded">

@@ -63,11 +63,11 @@
     <div class="event-card">
         <div>
             <label>Message</label>
-            <span>{{ $eventData['message'] }}</span>
+            <span>{{ $participantData['message'] }}</span>
         </div>
         <div>
             <label>Amount</label>
-            <span>{{ $eventData['amount'] }}</span>
+            <span>{{ $participantData['amount'] }}</span>
         </div>
         <div>
             <label>Bank ID</label>

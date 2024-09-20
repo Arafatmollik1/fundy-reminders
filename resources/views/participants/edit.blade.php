@@ -29,6 +29,14 @@
                             <x-fundy-ui-input name="email" id="email" type="email" value="{{ old('email', $participant->email) }}" class="block w-full mt-1" required />
                         </div>
 
+                        <!-- Message -->
+                        <div class="flex flex-col gap-6 overflow-hidden">
+                            <div class="relative">
+                                <x-fundy-ui-label for="event_message" value="Event Message" />
+                            </div>
+                            <x-fundy-ui-textarea name="event_message" id="event_message">{{ old('event_message', $event->message) }}</x-fundy-ui-textarea>
+                        </div>
+
                         <!-- Amount -->
                         <div class="mb-4">
                             <x-fundy-ui-label for="amount" value="Amount" />

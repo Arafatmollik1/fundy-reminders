@@ -40,7 +40,7 @@ class EventController extends Controller
 
         $eventData = [
             'name' => $validated['event_name'],
-            'day_of_the_month' => $validated['event_date'] ?? 'undefined',
+            'day_of_the_month' => $validated['event_date'] ?? 0,
             'recurring' => $validated['it_is_recurring'] ?? false,
             'has_message' => $validated['has_message'] ?? false,
             'message' => $validated['event_message'] ?? 'undefined',
