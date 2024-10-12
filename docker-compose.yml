@@ -19,13 +19,11 @@ services:
             - "8090:80"
         volumes:
             - ./:/var/www
-            - ${NGINX_CONFIG_PATH}:/etc/nginx/conf.d/default.conf
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         depends_on:
             - app
         networks:
             - laravel_network
-        environment:
-            - NGINX_CONFIG_PATH=${NGINX_CONFIG_PATH}
 
     db:
         image: mysql:8.0
