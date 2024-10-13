@@ -1,33 +1,24 @@
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        container_name: laravel_app
-        working_dir: /var/www
-        volumes:
-            - ./:/var/www
-        networks:
-            - laravel_network
-
     web:
-        image: nginx:alpine
-        container_name: laravel_web
-        restart: unless-stopped
-        volumes:
-            - .:/var/www
-            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        image: app-name:latest
+        build:
+            target: web
+            context: .
+        env_file:
+            - .env
         ports:
             - "8089:80"
-        networks:
-            - laravel_network
+        volumes:
+            - .:/var/www/html
         depends_on:
-            - app
+            - db
 
     db:
         image: mysql:8.0
         container_name: db
         restart: unless-stopped
+        env_file:
+            - .env
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -35,12 +26,6 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
         volumes:
             - db_data:/var/lib/mysql
-        networks:
-            - laravel_network
 
 volumes:
     db_data:
-
-networks:
-    laravel_network:
-        driver: bridge
