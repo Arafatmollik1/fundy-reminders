@@ -27,6 +27,9 @@ COPY . /var/www/html
 # Set the working directory
 WORKDIR /var/www/html
 
+# Create necessary directories
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
