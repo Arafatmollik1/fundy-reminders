@@ -28,7 +28,10 @@ COPY . /var/www/html
 WORKDIR /var/www/html
 
 # Create necessary directories
-RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+RUN mkdir -p storage/framework/cache/data \
+    && mkdir -p storage/framework/views \
+    && mkdir -p bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -40,4 +43,4 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN php artisan optimize:clear && php artisan optimize
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+#RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
