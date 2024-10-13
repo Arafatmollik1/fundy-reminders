@@ -4,8 +4,6 @@ services:
         build:
             target: web
             context: .
-        env_file:
-            - .env
         ports:
             - "8089:80"
         volumes:
