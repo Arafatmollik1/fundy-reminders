@@ -2,7 +2,8 @@
 
     use App\Http\Controllers\AdminLoginController;
     use App\Http\Controllers\AdminLogoutController;
-    use App\Http\Controllers\EmailController;
+use App\Http\Controllers\AdminRegisterController;
+use App\Http\Controllers\EmailController;
     use App\Http\Controllers\EventController;
     use App\Http\Controllers\ParticipantController;
     use App\Http\Controllers\PaymentConfirmationController;
@@ -16,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('admin-login', [AdminLoginController::class, 'index'])->name('admin-login.index');
 Route::post('admin-login', [AdminLoginController::class, 'handle'])->name('admin-login.handle');
+Route::get('admin-register', [AdminRegisterController::class, 'index'])->name('admin-register.index');
+Route::post('admin-register', [AdminRegisterController::class, 'create'])->name('admin-register.create');
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/dashboard', function () {
