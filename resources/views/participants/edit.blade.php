@@ -38,7 +38,7 @@
                         <!-- Date of Month -->
                         <div class="mb-4">
                             <x-fundy-ui-label for="date_of_month" value="Date of the Month" />
-                            <x-fundy-ui-input name="date_of_month" id="date_of_month" type="number" value="{{ old('date_of_month', $participant->date_of_month) }}" class="block w-full mt-1" />
+                            <x-fundy-ui-input name="date_of_month" id="date_of_month" type="number" value="{{ old('date_of_month', $participant->date_of_month) }}" class="block w-full mt-1 cursor-not-allowed bg-gray-200" readonly/>
                         </div>
 
                         <!-- Submit Button -->

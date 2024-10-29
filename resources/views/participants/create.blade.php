@@ -36,7 +36,7 @@
                         <!-- Date of Month -->
                         <div class="mb-4">
                             <x-fundy-ui-label for="date_of_month" value="Date of the Month" />
-                            <x-fundy-ui-input name="date_of_month" value="{{ $event->day_of_the_month }}" id="date_of_month" class="block w-full mt-1" required />
+                            <x-fundy-ui-input name="date_of_month" value="{{ $event->day_of_the_month }}" id="date_of_month" class="block w-full mt-1cursor-not-allowed bg-gray-200" required readonly/>
                         </div>
 
                         @if(!empty($errors->all()))
