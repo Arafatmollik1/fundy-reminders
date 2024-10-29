@@ -20,6 +20,7 @@ class Event extends Model
         'bank_id',
         'recipient_name',
         'mobile_pay_number',
+        'admin_id',
     ];
 
     public static function findOrFail(string $event)

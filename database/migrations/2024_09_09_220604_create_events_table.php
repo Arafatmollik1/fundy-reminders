@@ -23,6 +23,7 @@ return new class extends Migration
                 $table->string('bank_id')->nullable();
                 $table->string('recipient_name')->nullable();
                 $table->string('mobile_pay_number')->nullable();
+                $table->integer('admin_id')->nullable();
                 $table->timestamps();
         });
     }

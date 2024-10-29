@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\GetAllEventsAction;
 use App\Models\Event;
 use App\Models\Participant;
 use App\Models\User;
@@ -14,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $allEvents = Event::all();
+        $allEvents = (new GetAllEventsAction())->execute();
+
         return view('events.index' , compact('allEvents'));
     }
 
@@ -49,6 +51,7 @@ class EventController extends Controller
             'bank_id' => $validated['bank_id'] ?? 'undefined',
             'recipient_name' => $validated['recipient_name'] ?? 'undefined',
             'mobile_pay_number' => $validated['mobile_pay'] ?? 'undefined',
+            'admin_id' => auth()->user()->id,
         ];
 
         // Create the new event record

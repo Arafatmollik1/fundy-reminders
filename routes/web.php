@@ -9,7 +9,8 @@ use App\Http\Controllers\EmailController;
     use App\Http\Controllers\PaymentConfirmationController;
     use App\Http\Controllers\ProfileController;
     use App\Http\Controllers\ShowSuccessController;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\UserCanViewEvents;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
@@ -30,10 +31,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/events', [EventController::class, 'index'])->name('admin.events.index');
     Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
     Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
-    Route::get('/admin/events/{event}', [EventController::class, 'show'])->name('admin.events.show');
-    Route::get('/admin/events/{event}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-    Route::patch('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
-    Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+    Route::get('/admin/events/{event}', [EventController::class, 'show'])->name('admin.events.show')->middleware(UserCanViewEvents::class);
+    Route::get('/admin/events/{event}/edit', [EventController::class, 'edit'])->name('admin.events.edit')->middleware(UserCanViewEvents::class);
+    Route::patch('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update')->middleware(UserCanViewEvents::class);
+    Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy')->middleware(UserCanViewEvents::class);
 
 
     Route::get('/admin/{event}/participants/create', [ParticipantController::class, 'create'])->name('admin.participants.create');
